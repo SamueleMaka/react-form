@@ -16,6 +16,10 @@ function App() {
 
       setArticles([ ...articles ,newArticle ]) 
     }
+
+    const deleteArticle = (id) =>{
+      setArticles(articles.filter(currArticle => currArticle.id !== id))
+    }
     return (
       <>
         <h1>Aggiungi altri articoli</h1>
@@ -26,8 +30,11 @@ function App() {
                 articles.map(({id, titolo}) => {
                   return(
                     <li key={id}>
-                    {titolo}
-                  </li>
+                      {titolo}
+                      <button
+                        onClick={() => deleteArticle(id)}
+                      >X</button>
+                    </li>
                   )
                   
                 })
